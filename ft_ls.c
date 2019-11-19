@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 17:08:21 by mgena             #+#    #+#             */
-/*   Updated: 2019/11/18 22:18:01 by mgena            ###   ########.fr       */
+/*   Updated: 2019/11/19 18:18:14 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,39 +15,52 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void	ft_recursive(char *cur, t_flags flags, char *end)
+{
+	char *ptr;
+	ptr = ft_strdup(cur);
+	ptr = ft_strjoin(cur, "/");
+	ptr = ft_strjoin(ptr, end);
+	printf("%s:\n", ptr);
+	ft_ls(ptr, flags);
+}
 
+void print_files(t_list_dir *head, t_flags flags)
+{
+	while (head)
+	{
+		if (flags.all == 1)
+		printf("%s\n", head->data);
+		else
+		{
+			if (head->data[0] != '.')
+				printf("%s\n", head->data);
+		}
+		head = head->next;
+	}
+	printf("\n");
+}
 
-void	ft_ls(int argc, char **array, t_flags flags)
+void	ft_ls(char *array, t_flags flags)
 {
 	DIR *dir;
 	struct dirent *entry;
 	t_list_dir *head;
-	t_list_dir *tmp;
 
 	head = NULL;
-	if (argc == 1)
+	dir = opendir(array);
+	while ((entry = readdir(dir)) != NULL)
 	{
-		dir = opendir(".");
-		while ((entry = readdir(dir)) != NULL)
-		{
-				add_list_dir(entry, &head);
-
-		}
+		add_list_dir(entry, &head, flags);
 	}
-	else if (argc == 2)
-	{
-		dir = opendir(*array);
-		while ((entry= readdir(dir)) != NULL)
-		{
-			add_list_dir(entry, &head);
-		}
-	}
-	tmp = head;
-	while (head->next)
-	{
-		printf("%s - [%d]\n", (*head).data, (*head).type);
-		head = head->next;
-	}
+	print_files(head, flags);
 	if (flags.recursive == 1)
-		ft_recursive(argc, **array, flags);
+	{
+		while (head)
+		{
+			if (head->type == 4 && *(head->data) != '.')
+				ft_recursive(array, flags, head->data);
+			head = head->next;
+		}
+	}
 }
