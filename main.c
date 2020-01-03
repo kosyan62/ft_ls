@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 15:22:29 by mgena             #+#    #+#             */
-/*   Updated: 2019/11/19 16:58:06 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/03 20:13:29 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ t_flags		fill_flags(char *string)
 int		main(int argc, char **argv)
 {
 	t_flags flags;
-	char *array;
 	int i;
 
 	i = 1;

@@ -7,7 +7,9 @@ set(CMAKE_DEPENDS_CHECK_C
   "/Users/mgena/CLionProjects/ft_ls/fill.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/fill.c.o"
   "/Users/mgena/CLionProjects/ft_ls/ft_ls.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/ft_ls.c.o"
   "/Users/mgena/CLionProjects/ft_ls/list_func.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/list_func.c.o"
+  "/Users/mgena/CLionProjects/ft_ls/lst_func_more.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/lst_func_more.c.o"
   "/Users/mgena/CLionProjects/ft_ls/main.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/main.c.o"
+  "/Users/mgena/CLionProjects/ft_ls/print_large.c" "/Users/mgena/CLionProjects/ft_ls/cmake-build-debug/CMakeFiles/ft_ls.dir/print_large.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 

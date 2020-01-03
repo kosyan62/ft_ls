@@ -92,7 +92,13 @@
 		<Unit filename="/Users/mgena/CLionProjects/ft_ls/list_func.c">
 			<Option target="ft_ls"/>
 		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/lst_func_more.c">
+			<Option target="ft_ls"/>
+		</Unit>
 		<Unit filename="/Users/mgena/CLionProjects/ft_ls/main.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/print_large.c">
 			<Option target="ft_ls"/>
 		</Unit>
 		<Unit filename="/Users/mgena/CLionProjects/ft_ls/CMakeLists.txt">

@@ -6,7 +6,7 @@
 #    By: pkingsbl <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/10/12 16:27:53 by pkingsbl          #+#    #+#              #
-#    Updated: 2019/11/17 18:00:38 by mgena            ###   ########.fr        #
+#    Updated: 2020/01/03 20:14:45 by mgena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@ CFLAGS =
 
 PATH_LIBFT = libft
 
-SRC = main.c ft_ls.c fill.c list_func.c
+SRC = main.c ft_ls.c fill.c list_func.c lst_func_more.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 

@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 17:08:21 by mgena             #+#    #+#             */
-/*   Updated: 2019/11/19 18:18:14 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/03 21:51:15 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <sys/types.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 
 void	ft_recursive(char *cur, t_flags flags, char *end)
 {
@@ -41,6 +42,23 @@ void print_files(t_list_dir *head, t_flags flags)
 	printf("\n");
 }
 
+
+void print_files_large(t_list_dir *head, t_flags flags)
+{
+	while (head)
+	{
+		if (flags.all == 1)
+			printf("%s\n", head->data);
+		else
+		{
+			if (head->data[0] != '.')
+				print_more(*head);
+		}
+		head = head->next;
+	}
+	printf("\n");
+}
+
 void	ft_ls(char *array, t_flags flags)
 {
 	DIR *dir;
@@ -53,7 +71,10 @@ void	ft_ls(char *array, t_flags flags)
 	{
 		add_list_dir(entry, &head, flags);
 	}
-	print_files(head, flags);
+	if (flags.large == 1)
+		print_files_large(head, flags);
+	else
+		print_files(head, flags);
 	if (flags.recursive == 1)
 	{
 		while (head)

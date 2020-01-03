@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 12:58:56 by mgena             #+#    #+#             */
-/*   Updated: 2019/11/19 18:02:14 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/03 21:57:43 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
+# include <stdio.h>
+# include <fcntl.h>
 
 typedef struct		s_flags
 {
@@ -47,10 +49,15 @@ typedef struct		s_list_dir
 	off_t size;
 } t_list_dir;
 
-void	ft_ls(char *argv, t_flags flags);
-void add_list_dir(struct dirent *entry, t_list_dir **lst, t_flags flags);
+void		ft_ls(char *argv, t_flags flags);
+void		print_more(t_list_dir head);
+void		add_list_dir(struct dirent *entry, t_list_dir **lst, t_flags flags);
 t_list_dir	*ft_make_lst(struct dirent *content);
-void	ft_recursive(char *array, t_flags flags, char *end);
-
+void		ft_recursive(char *array, t_flags flags, char *end);
+void		ft_pop_lst(t_list_dir **lst, t_list_dir *newlst);
+void		lst_add_mod(t_list_dir **lst, t_list_dir *newlst);
+void		lst_add(t_list_dir **lst, t_list_dir *newlst);
+void		lst_add_abcsort(t_list_dir **lst, t_list_dir *newlst);
+void		lst_add_acc(t_list_dir **lst, t_list_dir *newlst);
 
 #endif
