@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:54:41 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/03 21:37:28 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/08 16:14:27 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,23 +15,29 @@
 #include <stdio.h>
 #include <errno.h>
 
-t_list_dir	*ft_make_lst(struct dirent *content)
+t_list_dir *ft_make_lst(char *path, char *name)
 {
 	t_list_dir	*newlist;
 	struct stat buf;
+	char *fullname;
 
-	stat(content->d_name, &buf);
 	newlist = (t_list_dir*)malloc(sizeof(t_list_dir));
 	if (newlist == NULL)
 		return (NULL);
-	newlist->data = ft_strdup(content->d_name);
-	newlist->type = content->d_type;
+	fullname = ft_strdup(path);
+	fullname = ft_strjoin(fullname, "/");
+	fullname = ft_strjoin(fullname, name);
+	lstat(fullname, & buf);
+	ft_strdel(&fullname);
+	ft_strcpy(newlist->name, name);
+	newlist->type = buf.st_mode;
 	newlist->next = NULL;
 	newlist->acc = buf.st_atimespec;
 	newlist->mod = buf.st_mtimespec;
+	newlist->birth = buf.st_birthtimespec;
 	newlist->links = buf.st_nlink;
 	newlist->mast_id = buf.st_uid;
-	newlist->secure = buf.st_mode;
+	newlist->group_ud = buf.st_gid;
 	newlist->size = buf.st_size;
 	return (newlist);
 }
@@ -77,10 +83,10 @@ void	lst_add_mod(t_list_dir **lst, t_list_dir *newlst)
 		*lst = newlst;
 	else
 	{
-		while (current->next && (current->next->mod.tv_nsec > newlst->mod.tv_nsec))
+		while (current->next && (current->next->mod.tv_sec > newlst->mod.tv_sec))
 			current = current->next;
-		while (current->next && current->next->mod.tv_nsec == newlst->mod.tv_nsec &&
-		ft_strcmp(current->next->data, newlst->data) < 0)
+		while (current->next && current->next->mod.tv_sec == newlst->mod.tv_sec &&
+			   ft_strcmp(current->next->name, newlst->name) < 0)
 			current = current->next;
 		ft_pop_lst(&current, newlst);
 	}
@@ -95,7 +101,7 @@ void lst_add_abcsort(t_list_dir **lst, t_list_dir *newlst)
 		*lst = newlst;
 	else
 	{
-		while (current->next && ft_strcmp(current->next->data, newlst->data) < 0)
+		while (current->next && ft_strcmp(current->next->name, newlst->name) < 0)
 			current = current->next;
 		ft_pop_lst(&current, newlst);
 	}

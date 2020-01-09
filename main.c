@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 15:22:29 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/03 20:13:29 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/08 15:32:34 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_flags		fill_flags(char *string)
 		if (*string == 'a')
 			res.all |= 1;
 		if (*string == 't')
-			res.time_mod |= 1;
+			res.time |= 1;
 		if (*string == '1')
 			res.one |= 1;
 		if (*string == 'u')
@@ -46,6 +46,7 @@ t_flags		fill_flags(char *string)
 		}
 		string++;
 	}
+//	printf("%u", res.time_acc);
 	return (res);
 }
 
@@ -67,7 +68,9 @@ int		main(int argc, char **argv)
 	if (argc == 1)
 		ft_ls(".", flags);
 	else if (argc == 2)
+	{
 		ft_ls(argv[1], flags);
+	}
 	else
 	{
 		while (i != argc)

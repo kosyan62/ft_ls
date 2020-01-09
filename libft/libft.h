@@ -6,7 +6,7 @@
 /*   By: mgena <marvin@42.fr>                       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:39:26 by mgena             #+#    #+#             */
-/*   Updated: 2019/11/18 20:12:54 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/09 18:52:57 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ typedef	struct		s_list
 {
 	void			*content;
 	size_t			content_size;
-	struct s_list_dir	*next;
+	struct s_list	*next;
 }					t_list;
 
 void				ft_putchar(char c);

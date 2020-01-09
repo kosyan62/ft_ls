@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 12:58:56 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/03 21:57:43 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/08 16:06:03 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ typedef struct		s_flags
 	unsigned int	large		: 1;
 	unsigned int	all			: 1;
 	unsigned int	reverse		: 1;
-	unsigned int	time_mod	: 1;
+	unsigned int	time	: 1;
 	unsigned int	time_acc	: 1;
 	unsigned int	one			: 1;
 	unsigned int	no_sort		: 1;
@@ -38,21 +38,24 @@ typedef struct		s_flags
 
 typedef struct		s_list_dir
 {
-	char *data;
-	int type;
+	char name[1024];
+//	char path[2048];
+	mode_t type;
 	struct s_list_dir *next;
-	mode_t secure;
 	uid_t mast_id;
+	gid_t group_ud;
 	nlink_t links;
 	struct timespec acc;
 	struct timespec mod;
+	struct timespec birth;
 	off_t size;
 } t_list_dir;
 
 void		ft_ls(char *argv, t_flags flags);
-void		print_more(t_list_dir head);
-void		add_list_dir(struct dirent *entry, t_list_dir **lst, t_flags flags);
-t_list_dir	*ft_make_lst(struct dirent *content);
+void		print_more(t_list_dir head, t_flags flags);
+void add_list_dir(struct dirent *entry, t_list_dir **lst, t_flags flags, char *path);
+void add_list_file(struct stat buf, t_list_dir **lst, char *array);
+t_list_dir *ft_make_lst(char *path, char *name);
 void		ft_recursive(char *array, t_flags flags, char *end);
 void		ft_pop_lst(t_list_dir **lst, t_list_dir *newlst);
 void		lst_add_mod(t_list_dir **lst, t_list_dir *newlst);

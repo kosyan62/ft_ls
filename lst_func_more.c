@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 19:16:32 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/03 19:18:30 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/08 16:25:34 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void		lst_add_acc(t_list_dir **lst, t_list_dir *newlst)
 		*lst = newlst;
 	else
 	{
-		while (current->next && (current->next->acc.tv_nsec > newlst->acc.tv_nsec))
+		while (current->next && (current->next->acc.tv_sec > newlst->acc.tv_sec))
 			current = current->next;
-		while (current->next && current->next->acc.tv_nsec == newlst->acc.tv_nsec &&
-			   ft_strcmp(current->next->data, newlst->data) < 0)
+		while (current->next && current->next->acc.tv_sec == newlst->acc.tv_sec &&
+			   ft_strcmp(current->next->name, newlst->name) < 0)
 			current = current->next;
 		ft_pop_lst(&current, newlst);
 	}
