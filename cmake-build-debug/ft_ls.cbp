@@ -44,6 +44,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/mgena/CLionProjects/ft_ls/includes"/>
+					<Add directory="/Users/mgena/CLionProjects/ft_ls/srcs/libft"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -65,6 +67,8 @@
 				<Option type="1"/>
 				<Option compiler="gcc"/>
 				<Compiler>
+					<Add directory="/Users/mgena/CLionProjects/ft_ls/includes"/>
+					<Add directory="/Users/mgena/CLionProjects/ft_ls/srcs/libft"/>
 					<Add directory="/usr/local/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/9.0.0/include"/>
 					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
@@ -80,25 +84,217 @@
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/fill.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/includes/header.h">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/ft_ls.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/fill.c">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/header.h">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/ft_ls.c">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/list_func.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_abortalloc.c">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/lst_func_more.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_atoi.c">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/main.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_atol.c">
 			<Option target="ft_ls"/>
 		</Unit>
-		<Unit filename="/Users/mgena/CLionProjects/ft_ls/print_large.c">
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_bzero.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_countdigits.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_isalnum.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_isalpha.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_isascii.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_isdigit.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_isprint.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_itoa.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstadd.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstdel.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstdelone.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstiter.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstmap.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_lstnew.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memalloc.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memccpy.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memchr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memcmp.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memcpy.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memdel.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memmove.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_memset.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putchar.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putchar_fd.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putendl.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putendl_fd.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putnbr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putnbr_fd.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putstr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_putstr_fd.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strcat.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strchr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strclen.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strclr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strcmp.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strcpy.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strdel.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strdup.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strequ.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_striter.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_striteri.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strjoin.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strlcat.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strlen.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strmap.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strmapi.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strncat.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strncmp.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strncpy.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strnequ.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strnew.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strnstr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strrchr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strsplit.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strstr.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strsub.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_strtrim.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_tolower.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_toupper.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/ft_wordcount.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/libft/libft.h">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/list_func.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/lst_func_more.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/main.c">
+			<Option target="ft_ls"/>
+		</Unit>
+		<Unit filename="/Users/mgena/CLionProjects/ft_ls/srcs/print_large.c">
 			<Option target="ft_ls"/>
 		</Unit>
 		<Unit filename="/Users/mgena/CLionProjects/ft_ls/CMakeLists.txt">

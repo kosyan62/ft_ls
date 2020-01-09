@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: pkingsbl <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: mgena <mgena@student.42.fr>                +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2019/10/12 16:27:53 by pkingsbl          #+#    #+#              #
-#    Updated: 2020/01/03 20:14:45 by mgena            ###   ########.fr        #
+#    Created: 2020/01/09 20:50:25 by mgena             #+#    #+#              #
+#    Updated: 2020/01/09 20:59:33 by mgena            ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,9 +15,9 @@ NAME = ft_ls
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
-PATH_LIBFT = libft
+PATH_LIBFT = srcs/libft
 
-SRC = main.c ft_ls.c fill.c list_func.c lst_func_more.c print_large.c
+SRC = srcs/main.c srcs/ft_ls_greatthing.c srcs/fill.c srcs/list_func.c srcs/lst_func_more.c srcs/print_large.c
 
 OBJ = $(patsubst %.c,%.o,$(SRC))
 
