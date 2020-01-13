@@ -6,5 +6,5 @@ C_FLAGS = -g   -std=gnu11
 
 C_DEFINES = 
 
-C_INCLUDES = -I/Users/mgena/CLionProjects/ft_ls/includes -I/Users/mgena/CLionProjects/ft_ls/srcs/libft 
+C_INCLUDES = -I/Users/mgena/CLionProjects/ft_ls/includes -I/Users/mgena/CLionProjects/ft_ls/includes/ft_printf -I/Users/mgena/CLionProjects/ft_ls/includes/libft 
 

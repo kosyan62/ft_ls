@@ -6,77 +6,107 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 21:31:21 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/09 21:31:21 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/13 20:16:55 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "../includes/header.h"
 
-t_flags		fill_flags(char *string)
+t_flags		make_flag_more(t_flags res, char *string)
 {
-	static t_flags res;
+	if (*string == 'u')
+		res.time_acc |= 1;
+	else if (*string == 'G')
+		res.colour |= 1;
+	else if (*string == 'g')
+		res.all_no_host |= 1;
+	else if (*string == 'd')
+		res.dir_to_file |= 1;
+	else if (*string == 'f')
+	{
+		res.no_sort |= 1;
+		res.all |= 1;
+	}
+	else
+		error_unexpected_flag(*string);
+	return (res);
+}
 
+t_flags		make_flag(t_flags res, char *string)
+{
 	while (*string != 0)
 	{
 		if (*string == 'R')
 			res.recursive |= 1;
-		if (*string == 'r')
+		else if (*string == 'r')
 			res.reverse |= 1;
-		if (*string == 'l')
+		else if (*string == 'l')
 			res.large |= 1;
-		if (*string == 'a')
+		else if (*string == 'a')
 			res.all |= 1;
-		if (*string == 't')
+		else if (*string == 't')
 			res.time |= 1;
-		if (*string == '1')
+		else if (*string == '1')
 			res.one |= 1;
-		if (*string == 'u')
-			res.time_acc |= 1;
-		if (*string == 'G')
-			res.colour |= 1;
-		if (*string == 'g')
-			res.all_no_host |= 1;
-		if (*string == 'd')
-			res.dir_to_file |= 1;
-		if (*string == 'f')
-		{
-			res.no_sort |= 1;
-			res.all |= 1;
-		}
+		else
+			res = make_flag_more(res, string);
 		string++;
 	}
 	return (res);
 }
 
-int		main(int argc, char **argv)
+t_flags		fill_flags(char *string)
+{
+	static t_flags	res;
+	static _Bool	was_dbl_dsh;
+
+	if (ft_strcmp(string, "--") == 0)
+	{
+		was_dbl_dsh = 1;
+		return (res);
+	}
+	else if (ft_strcmp(string, "-") == 0 || was_dbl_dsh == 1)
+		error_file(string);
+	string++;
+	res = make_flag(res, string);
+	return (res);
+}
+
+void		chose_arg_format(char *name, t_flags flags)
+{
+	t_list_dir *head;
+
+	head = new_lst(".", name);
+	if (!head)
+	{
+		return ;
+	}
+	if (S_ISDIR(head->type))
+		ls_dir(name, flags);
+	else
+		print_ls(head, flags);
+}
+
+int			main(int argc, char **argv)
 {
 	t_flags flags;
-	int i;
 
-	i = 1;
 	while (argc != 1 && *argv[1] == '-')
 	{
 		flags = fill_flags(argv[1]);
 		argv++;
 		argc -= 1;
 	}
-
 	if (argc == 1)
-		ft_ls_lulz(".", flags);
+		ls_dir(".", flags);
 	else if (argc == 2)
 	{
-		ft_ls_lulz(argv[1], flags);
+		chose_arg_format(argv[1], flags);
 	}
 	else
 	{
-		while (i != argc)
-		{
-			printf("%s:\n", argv[i]);
-			ft_ls_lulz(argv[i], flags);
-			i++;
-		}
+		mult_args(argc, argv, flags);
 	}
-	return 0;
+	return (0);
 }
-

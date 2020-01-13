@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:54:41 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/09 22:18:07 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/13 22:22:55 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,35 +16,42 @@
 #include <errno.h>
 #include <sys/xattr.h>
 
-t_list_dir *ft_make_lst(char *path, char *name)
+char		*get_full_name(char *path, char *name)
+{
+	char *fullname;
+	char tmp[1024];
+
+	ft_strcpy(tmp, path);
+	ft_strcat(tmp, "/");
+	ft_strcat(tmp, name);
+	fullname = ft_strdup(tmp);
+	return (fullname);
+}
+
+t_list_dir	*new_lst(char *path, char *name)
 {
 	t_list_dir	*newlist;
-	struct stat buf;
-	char *fullname;
+	struct stat	buf;
+	char		*fullname;
 
 	newlist = (t_list_dir*)malloc(sizeof(t_list_dir));
 	if (newlist == NULL)
+		perror("malloc");
+	fullname = get_full_name(path, name);
+	if (lstat(fullname, &buf) < 0)
+	{
+		error_file(name);
+		free(newlist);
 		return (NULL);
-	fullname = ft_strdup(path);
-	fullname = ft_strjoin(fullname, "/");
-	fullname = ft_strjoin(fullname, name);
-	lstat(fullname, & buf);
+	}
 	ft_strcpy(newlist->name, name);
 	ft_strcpy(newlist->fullname, fullname);
-	newlist->type = buf.st_mode;
-	newlist->next = NULL;
-	newlist->acc = buf.st_atimespec;
-	newlist->mod = buf.st_mtimespec;
-	newlist->birth = buf.st_birthtimespec;
-	newlist->links = buf.st_nlink;
-	newlist->mast_id = buf.st_uid;
-	newlist->group_ud = buf.st_gid;
-	newlist->size = buf.st_size;
+	fill_lst(buf, newlist);
 	ft_strdel(&fullname);
 	return (newlist);
 }
 
-void ft_pop_lst(t_list_dir **lst, t_list_dir *newlst)
+void		ft_pop_lst_aft(t_list_dir **lst, t_list_dir *newlst)
 {
 	t_list_dir *current;
 	t_list_dir *tmp;
@@ -61,22 +68,7 @@ void ft_pop_lst(t_list_dir **lst, t_list_dir *newlst)
 	}
 }
 
-void	lst_add(t_list_dir **lst, t_list_dir *newlst)
-{
-	t_list_dir *current;
-
-	current = *lst;
-	if (current == NULL)
-	*lst = newlst;
-	else
-	{
-	while (current->next != NULL)
-		current = current->next;
-	current->next = newlst;
-	}
-}
-
-void	lst_add_mod(t_list_dir **lst, t_list_dir *newlst)
+void		lst_no_sort(t_list_dir **lst, t_list_dir *newlst)
 {
 	t_list_dir *current;
 
@@ -85,26 +77,36 @@ void	lst_add_mod(t_list_dir **lst, t_list_dir *newlst)
 		*lst = newlst;
 	else
 	{
-		while (current->next && (current->next->mod.tv_sec > newlst->mod.tv_sec))
+		while (current->next != NULL)
 			current = current->next;
-		while (current->next && current->next->mod.tv_sec == newlst->mod.tv_sec &&
-			   ft_strcmp(current->next->name, newlst->name) < 0)
-			current = current->next;
-		ft_pop_lst(&current, newlst);
+		current->next = newlst;
 	}
 }
 
-void lst_add_abcsort(t_list_dir **lst, t_list_dir *newlst)
+void		lst_time_mod_sort(t_list_dir **lst, t_list_dir *newlst)
 {
-	t_list_dir *current;
+	t_list_dir *curr;
 
-	current = *lst;
-	if (current == NULL)
+	curr = *lst;
+	if (curr == NULL)
+	{
 		*lst = newlst;
+		return ;
+	}
 	else
 	{
-		while (current->next && ft_strcmp(current->next->name, newlst->name) < 0)
-			current = current->next;
-		ft_pop_lst(&current, newlst);
+		while (curr->next && (curr->next->mod.tv_sec > newlst->mod.tv_sec))
+			curr = curr->next;
+		while (curr->next && curr->next->mod.tv_sec == newlst->mod.tv_sec &&
+			ft_strcmp(curr->next->name, newlst->name) < 0)
+			curr = curr->next;
+		ft_pop_lst_aft(&curr, newlst);
+		if (curr->next->mod.tv_sec > curr->mod.tv_sec
+			|| (curr->next->mod.tv_sec == curr->mod.tv_sec &&
+				ft_strcmp(curr->next->name, curr->name) < 0))
+		{
+			lst_swap(&curr);
+			*lst = curr;
+		}
 	}
 }
