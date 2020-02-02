@@ -6,11 +6,14 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 17:08:21 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 22:42:25 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/13 17:07:01 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/header.h"
+#include <sys/types.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <time.h>
 
 void	ft_recursive(char *cur, t_flags flags, char *end)

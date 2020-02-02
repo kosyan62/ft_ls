@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 21:31:21 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 20:16:55 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/13 18:11:50 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,6 @@ t_flags		make_flag_more(t_flags res, char *string)
 		res.colour |= 1;
 	else if (*string == 'g')
 		res.all_no_host |= 1;
-	else if (*string == 'd')
-		res.dir_to_file |= 1;
 	else if (*string == 'f')
 	{
 		res.no_sort |= 1;
@@ -78,10 +76,6 @@ void		chose_arg_format(char *name, t_flags flags)
 	t_list_dir *head;
 
 	head = new_lst(".", name);
-	if (!head)
-	{
-		return ;
-	}
 	if (S_ISDIR(head->type))
 		ls_dir(name, flags);
 	else

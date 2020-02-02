@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 12:58:56 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 17:46:43 by mgena            ###   ########.fr       */
+/*   Updated: 2020/01/13 18:16:32 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
 
 typedef struct	s_flags
@@ -32,7 +31,6 @@ typedef struct	s_flags
 	unsigned int	time_acc	: 1;
 	unsigned int	one			: 1;
 	unsigned int	no_sort		: 1;
-	unsigned int	dir_to_file	: 1;
 	unsigned int	all_no_host	: 1;
 	unsigned int	colour		: 1;
 }				t_flags;
