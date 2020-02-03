@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 15:33:22 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 16:59:49 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/02 15:04:37 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #include "../includes/header.h"
 #include <sys/stat.h>
 #include <stdlib.h>
+#include <pwd.h>
+#include <grp.h>
 
 void	add_list(t_list_dir **lst, t_flags flags, char *path, char *name)
 {
@@ -35,6 +37,21 @@ void	add_list(t_list_dir **lst, t_flags flags, char *path, char *name)
 		lst_abcsort(lst, newlst);
 }
 
+void get_name_and_group(struct stat stat, t_list_dir *list)
+{
+	char			*name;
+	char			*group;
+	struct passwd	*src_name;
+	struct group	*src_group;
+
+	src_name = getpwuid(stat.st_uid);
+	src_group = getgrgid(stat.st_gid);
+	name = ft_strdup(src_name->pw_name);
+	group = ft_strdup(src_group->gr_name);
+	list->host = name;
+	list->group = group;
+}
+
 void	fill_lst(struct stat buf, t_list_dir *newlist)
 {
 	newlist->blocks = buf.st_blocks;
@@ -43,7 +60,6 @@ void	fill_lst(struct stat buf, t_list_dir *newlist)
 	newlist->acc = buf.st_atimespec;
 	newlist->mod = buf.st_mtimespec;
 	newlist->links = buf.st_nlink;
-	newlist->mast_id = buf.st_uid;
-	newlist->group_ud = buf.st_gid;
 	newlist->size = buf.st_size;
+	get_name_and_group(buf, newlist);
 }

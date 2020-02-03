@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/18 17:54:41 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 16:52:26 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/03 16:13:56 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char		*get_full_name(char *path, char *name)
 	char *fullname;
 	char tmp[1024];
 
+	if (ft_strcmp(".", path) == 0)
+		return (ft_strdup(name));
 	ft_strcpy(tmp, path);
 	ft_strcat(tmp, "/");
 	ft_strcat(tmp, name);

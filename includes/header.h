@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/17 12:58:56 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 18:16:32 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/02 14:40:54 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef struct	s_flags
 	unsigned int	no_sort		: 1;
 	unsigned int	all_no_host	: 1;
 	unsigned int	colour		: 1;
+	int	links_len;
+	int name_len;
+	int	size_len;
+	int group;
+
 }				t_flags;
 
 typedef struct	s_list_dir
@@ -42,12 +47,13 @@ typedef struct	s_list_dir
 	blkcnt_t			blocks;
 	mode_t				type;
 	struct s_list_dir	*next;
-	uid_t				mast_id;
-	gid_t				group_ud;
+	char				*host;
+	char				*group;
 	nlink_t				links;
 	struct timespec		acc;
 	struct timespec		mod;
 	off_t				size;
+
 }				t_list_dir;
 
 void			ls_dir(char *array, t_flags flags);

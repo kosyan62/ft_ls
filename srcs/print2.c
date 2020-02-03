@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 16:14:26 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 18:03:31 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/02 15:08:58 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,20 +17,11 @@
 
 void	print_name_and_group(t_list_dir head, t_flags flags)
 {
-	char			*name;
-	char			*group;
-	struct passwd	*src_name;
-	struct group	*src_group;
-
-	src_name = getpwuid(head.mast_id);
-	src_group = getgrgid(head.group_ud);
-	name = ft_strdup(src_name->pw_name);
-	group = ft_strdup(src_group->gr_name);
 	if (flags.all_no_host)
-		*name = 0;
-	ft_printf(" %s  %s", name, group);
-	ft_strdel(&name);
-	ft_strdel(&group);
+		head.host = 0;
+	ft_printf(" %*s  %-*s", flags.name_len, head.host, flags.group + 1, head.group);
+	ft_strdel(&head.host);
+	ft_strdel(&head.group);
 }
 
 void	print_time(struct timespec time)

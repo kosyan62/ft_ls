@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/03 21:51:56 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 18:50:11 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/02 15:11:48 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,9 +86,9 @@ void	print_more(t_list_dir head, t_flags flags)
 {
 	print_type(head);
 	choose_chmod(head);
-	ft_printf(" %1d", head.links);
+	ft_printf("%*d", flags.links_len+1, head.links);
 	print_name_and_group(head, flags);
-	ft_printf(" %4lld ", head.size);
+	ft_printf(" %*lld ", flags.size_len, head.size);
 	if (flags.time_acc)
 		print_time(head.acc);
 	else

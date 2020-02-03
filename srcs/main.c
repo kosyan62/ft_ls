@@ -6,11 +6,12 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 21:31:21 by mgena             #+#    #+#             */
-/*   Updated: 2020/01/13 18:11:50 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/03 16:22:19 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
+#include <errno.h>
 #include "../includes/header.h"
 
 t_flags		make_flag_more(t_flags res, char *string)
@@ -28,6 +29,10 @@ t_flags		make_flag_more(t_flags res, char *string)
 	}
 	else
 		error_unexpected_flag(*string);
+	res.links_len = 0;
+	res.name_len = 0;
+	res.size_len = 0;
+	res.group = 0;
 	return (res);
 }
 
@@ -76,6 +81,8 @@ void		chose_arg_format(char *name, t_flags flags)
 	t_list_dir *head;
 
 	head = new_lst(".", name);
+	if (head == NULL)
+		return ;
 	if (S_ISDIR(head->type))
 		ls_dir(name, flags);
 	else
