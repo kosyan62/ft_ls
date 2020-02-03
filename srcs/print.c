@@ -6,7 +6,7 @@
 /*   By: mgena <mgena@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/11 17:58:13 by mgena             #+#    #+#             */
-/*   Updated: 2020/02/02 15:09:18 by mgena            ###   ########.fr       */
+/*   Updated: 2020/02/03 17:16:31 by mgena            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	print_ls_less(t_list_dir *head, t_flags flags)
 	}
 }
 
-void get_len_for_spaces(t_list_dir *head, t_flags *flags)
+void	get_len_for_spaces(t_list_dir *head, t_flags *flags)
 {
 	int links;
 	int name;

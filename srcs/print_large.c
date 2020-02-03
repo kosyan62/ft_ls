@@ -86,7 +86,7 @@ void	print_more(t_list_dir head, t_flags flags)
 {
 	print_type(head);
 	choose_chmod(head);
-	ft_printf("%*d", flags.links_len+1, head.links);
+	ft_printf("%*d", flags.links_len + 1, head.links);
 	print_name_and_group(head, flags);
 	ft_printf(" %*lld ", flags.size_len, head.size);
 	if (flags.time_acc)

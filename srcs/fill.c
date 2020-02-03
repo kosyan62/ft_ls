@@ -37,7 +37,7 @@ void	add_list(t_list_dir **lst, t_flags flags, char *path, char *name)
 		lst_abcsort(lst, newlst);
 }
 
-void get_name_and_group(struct stat stat, t_list_dir *list)
+void	get_name_and_group(struct stat stat, t_list_dir *list)
 {
 	char			*name;
 	char			*group;
