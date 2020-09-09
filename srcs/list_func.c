@@ -97,14 +97,14 @@ void		lst_time_mod_sort(t_list_dir **lst, t_list_dir *newlst)
 	}
 	else
 	{
-		while (curr->next && (curr->next->mod.tv_sec > newlst->mod.tv_sec))
+		while (curr->next && (curr->next->mod > newlst->mod))
 			curr = curr->next;
-		while (curr->next && curr->next->mod.tv_sec == newlst->mod.tv_sec &&
+		while (curr->next && curr->next->mod == newlst->mod &&
 			ft_strcmp(curr->next->name, newlst->name) < 0)
 			curr = curr->next;
 		ft_pop_lst_aft(&curr, newlst);
-		if (curr->next->mod.tv_sec > curr->mod.tv_sec
-			|| (curr->next->mod.tv_sec == curr->mod.tv_sec &&
+		if (curr->next->mod > curr->mod
+			|| (curr->next->mod == curr->mod &&
 				ft_strcmp(curr->next->name, curr->name) < 0))
 		{
 			lst_swap(&curr);

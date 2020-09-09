@@ -13,9 +13,11 @@
 #include "../includes/header.h"
 #include <sys/stat.h>
 #include <sys/xattr.h>
-#include <sys/acl.h>
 #include <time.h>
 #include <errno.h>
+#ifdef __APPLE__
+#include <sys/acl.h>
+#endif
 
 void	print_type(t_list_dir head)
 {
@@ -43,6 +45,7 @@ void	print_chmod(mode_t type, int bit, char ch)
 		ft_printf("-");
 }
 
+#ifdef __APPLE__
 void	print_exattr(t_list_dir head)
 {
 	acl_t		acl;
@@ -67,6 +70,7 @@ void	print_exattr(t_list_dir head)
 		chr = ' ';
 	ft_printf("%c", chr);
 }
+#endif
 
 void	choose_chmod(t_list_dir head)
 {
@@ -79,7 +83,9 @@ void	choose_chmod(t_list_dir head)
 	print_chmod(head.type, S_IROTH, 'r');
 	print_chmod(head.type, S_IWOTH, 'w');
 	print_chmod(head.type, S_IXOTH, 'x');
+#ifdef __APPLE__
 	print_exattr(head);
+#endif
 }
 
 void	print_more(t_list_dir head, t_flags flags)

@@ -13,6 +13,12 @@
 #ifndef FT_LS_HEADER_H
 # define FT_LS_HEADER_H
 
+#ifdef __APPLE__
+#ifndef st_mtime
+#define st_mtime st_mtimespec.tv_sec
+#endif
+#endif
+
 # include <dirent.h>
 # include "libft/libft.h"
 # include "ft_printf/libftprintf.h"
@@ -50,8 +56,8 @@ typedef struct	s_list_dir
 	char				*host;
 	char				*group;
 	nlink_t				links;
-	struct timespec		acc;
-	struct timespec		mod;
+	time_t				acc;
+	time_t				mod;
 	off_t				size;
 
 }				t_list_dir;
@@ -76,7 +82,7 @@ void			error_unexpected_flag(char ch);
 void			error_file(char *name);
 t_list_dir		*new_lst(char *path, char *name);
 void			print_name_and_group(t_list_dir head, t_flags flags);
-void			print_time(struct timespec time);
+void			print_time(time_t time);
 void			print_link(t_list_dir dir);
 void			fill_lst(struct stat buf, t_list_dir *newlist);
 

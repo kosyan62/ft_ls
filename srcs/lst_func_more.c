@@ -21,14 +21,14 @@ void	lst_time_access_sort(t_list_dir **lst, t_list_dir *newlst)
 		*lst = newlst;
 	else
 	{
-		while (curr->next && (curr->next->acc.tv_sec > newlst->acc.tv_sec))
+		while (curr->next && (curr->next->acc > newlst->acc))
 			curr = curr->next;
-		while (curr->next && curr->next->acc.tv_sec == newlst->acc.tv_sec &&
+		while (curr->next && curr->next->acc == newlst->acc &&
 		ft_strcmp(curr->next->name, newlst->name) < 0)
 			curr = curr->next;
 		ft_pop_lst_aft(&curr, newlst);
-		if (curr->next->acc.tv_sec > curr->acc.tv_sec
-			|| (curr->next->acc.tv_sec == curr->acc.tv_sec &&
+		if (curr->next->acc > curr->acc
+			|| (curr->next->acc == curr->acc &&
 				ft_strcmp(curr->next->name, curr->name) < 0))
 		{
 			lst_swap(&curr);

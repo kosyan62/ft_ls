@@ -57,8 +57,8 @@ void	fill_lst(struct stat buf, t_list_dir *newlist)
 	newlist->blocks = buf.st_blocks;
 	newlist->type = buf.st_mode;
 	newlist->next = NULL;
-	newlist->acc = buf.st_atimespec;
-	newlist->mod = buf.st_mtimespec;
+	newlist->acc = buf.st_atime;
+	newlist->mod = buf.st_mtime;
 	newlist->links = buf.st_nlink;
 	newlist->size = buf.st_size;
 	get_name_and_group(buf, newlist);

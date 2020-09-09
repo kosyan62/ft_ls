@@ -25,11 +25,11 @@ void	print_name_and_group(t_list_dir head, t_flags flags)
 	ft_strdel(&head.group);
 }
 
-void	print_time(struct timespec time)
+void	print_time(time_t time)
 {
 	char timestr[25];
 
-	ft_strcpy(timestr, ctime(&time.tv_sec));
+	ft_strcpy(timestr, ctime(&time));
 	ft_strcpy(timestr, &timestr[4]);
 	timestr[12] = '\0';
 	ft_printf("%s ", timestr);

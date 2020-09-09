@@ -26,7 +26,7 @@ OBJ = $(patsubst %.c,%.o,$(SRC))
 all: $(NAME)
 
 $(NAME): $(PATH_LIBFT)/libft.a $(OBJ)
-	$(CC) $(CFLAGS) -I libftprintf.h -c $(SRC) 
+	$(CC) $(CFLAGS) -I.. -c $(SRC) 
 	@cp $(PATH_LIBFT)/libft.a ./$(NAME)
 	@ar rc $(NAME) $(OBJ)
 	@ranlib $(NAME)
