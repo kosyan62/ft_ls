@@ -20,8 +20,7 @@
 #endif
 
 # include <dirent.h>
-# include "libft/libft.h"
-# include "ft_printf/libftprintf.h"
+# include "libft.h"
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <unistd.h>
