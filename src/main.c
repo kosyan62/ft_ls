@@ -89,10 +89,32 @@ void		chose_arg_format(char *name, t_flags flags)
 		print_ls(head, flags);
 }
 
+t_flags init_flags(void)
+{
+	t_flags flags;
+
+	flags.recursive = 0;
+	flags.large = 0;
+	flags.all = 0;
+	flags.reverse = 0;
+	flags.time = 0;
+	flags.time_acc = 0;
+	flags.one = 0;
+	flags.no_sort = 0;
+	flags.all_no_host = 0;
+	flags.colour = 0;
+	flags.links_len = 0;
+	flags.name_len = 0;
+	flags.size_len = 0;
+	flags.group = 0;
+	return (flags);
+}
+
 int			main(int argc, char **argv)
 {
 	t_flags flags;
 
+	flags = init_flags();
 	while (argc != 1 && *argv[1] == '-')
 	{
 		flags = fill_flags(argv[1]);

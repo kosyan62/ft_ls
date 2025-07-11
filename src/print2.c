@@ -19,7 +19,7 @@ void	print_name_and_group(t_list_dir head, t_flags flags)
 {
 	if (flags.all_no_host)
 		head.host = 0;
-	ft_printf(" %*s  %-*s", flags.name_len, head.host,
+	ft_printf(" %*s %-*s", flags.name_len, head.host,
 			flags.group + 1, head.group);
 	ft_strdel(&head.host);
 	ft_strdel(&head.group);
