@@ -39,12 +39,10 @@ void	get_len_for_spaces(t_list_dir *head, t_flags *flags)
 	size = ft_countdigits(head->size);
 	name = ft_strlen(head->host);
 	group_len = ft_strlen(head->group);
-	if (links > flags->links_len)
+	if (links > flags->links_len && (head->name[0] != '.' || flags->all))
 		flags->links_len = links;
-	if (size > flags->size_len)
+	if (size > flags->size_len && (head->name[0] != '.' || flags->all))
 		flags->size_len = size;
-	if (name > flags->name_len)
-		flags->name_len = name;
 	if (name > flags->name_len)
 		flags->name_len = name;
 	if (group_len > flags->group)

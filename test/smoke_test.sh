@@ -1,6 +1,7 @@
 #!/bin/bash
 
-LS_CMD=../ft_ls
+SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
+LS_CMD="$SCRIPT_DIR/../ft_ls"
 TEST_DIR=test_dir
 
 # create a test directory and files
@@ -25,6 +26,7 @@ else
     echo "$LS_OUTPUT"
     echo "Got:"
     echo "$TEST_OUTPUT"
+    exit 1
 fi
 
 LS_OUTPUT=$(ls -l test_dir)
@@ -38,7 +40,10 @@ else
     echo "$LS_OUTPUT"
     echo "Got:"
     echo "$TEST_OUTPUT"
+    exit 1
 fi
 
 # Clean up test directory
 rm -rf "$TEST_DIR"
+echo "All smoke tests passed successfully."
+exit 0
