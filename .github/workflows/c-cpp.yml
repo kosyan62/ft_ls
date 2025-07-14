@@ -19,7 +19,9 @@ jobs:
       with:
         path: ft_ls
         key: executable-${{ hashFiles('ft_ls/**/*') }}
-    - run: make -C ft_ls
+    - name: Build executable
+      if: steps.cache-executable.outputs.cache-hit != 'true'
+      run: make -C ft_ls
 
   test:
     runs-on: ubuntu-latest
