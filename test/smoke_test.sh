@@ -1,7 +1,7 @@
 #!/bin/bash
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-LS_CMD="$SCRIPT_DIR/../ft_ls"
+LS_CMD="$SCRIPT_DIR/../ft_ls/ft_ls"
 TEST_DIR=test_dir
 
 # create a test directory and files
